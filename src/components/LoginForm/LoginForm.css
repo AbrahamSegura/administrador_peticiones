@@ -1,0 +1,49 @@
+section {
+    display: grid;
+    aspect-ratio: 16/9;
+    align-content: center;
+    margin: auto;
+    height: 50%;
+    background-color: #777;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    margin: 10px 0 0 0;
+    gap: 10px;
+}
+
+form>input {
+    padding: 5px 0;
+    outline: none;
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    background-color: transparent;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+    font-size: 1em;
+    color: #fff;
+}
+
+button {
+    padding: 10px 0;
+    background-color: #09f;
+    border: none;
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 20px;
+    box-shadow: 2px 2px #fff;
+}
