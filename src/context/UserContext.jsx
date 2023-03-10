@@ -4,8 +4,8 @@ const User = createContext()
 
 export function UserContexProvaider({ children }) {
     const [user, setUser] = useState({
-        "user-name": "",
-        "user-password": ""
+        "username": "",
+        "password": ""
     })
     return (
         <User.Provider value={{ user, setUser }}>
