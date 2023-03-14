@@ -1,3 +1,7 @@
+body {
+    background-color: var(--grey);
+}
+
 section {
     display: grid;
     aspect-ratio: 16/9;
@@ -38,7 +42,7 @@ form>input {
     color: #fff;
 }
 
-button {
+form>button {
     padding: 10px 0;
     background-color: #09f;
     border: none;
@@ -46,4 +50,10 @@ button {
     font-size: 1.3em;
     border-radius: 20px;
     box-shadow: 2px 2px #fff;
+}
+
+.error-msg {
+    color: var(--red);
+    padding: 5px;
+    font-weight: 600;
 }

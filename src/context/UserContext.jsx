@@ -4,8 +4,8 @@ const User = createContext()
 
 export function UserContexProvaider({ children }) {
     const [user, setUser] = useState({
-        "username": "",
-        "password": ""
+        "username": undefined,
+        "password": undefined
     })
     return (
         <User.Provider value={{ user, setUser }}>

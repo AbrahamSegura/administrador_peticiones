@@ -16,31 +16,37 @@ export default function LoginForm() {
       "username": isValideName(data["username"]) ? data["username"] : null,
       "password": isValidePassward(data["password"]) ? encoder(data["password"]) : null
     }
-    setUser(validate)
     if (validate['username'] && validate['password']) {
+      // const opt = {
+      //   Method: "post",
+      //   Body: {
+      //     "username": validate['username'],
+      //     "password": validate['password']
+      //   }
+      // }
+      // // fetch('http://localhost:3030/validUsers/', opt) pendiente!!
+      //   .then(res => console.log(res))
+      //   .then(res => console.log(res))
       evt.target.reset()
       setLocation("/")
     }
+    setUser(validate)
   }
-
-  console.log(user)
   return (
     <section>
       <article>
         <h2>Ingresar</h2>
-        <form method='post' onSubmit={handelSudmit}>
+        <form onSubmit={handelSudmit}>
           <input type="text" name='username' id='userName' placeholder='ingresa tu usuario' />
           {
-            user["username"] === null ? <span>Usuario invalido</span> : null
+            user["username"] === null ? <span className='error-msg'>Usuario invalido</span> : null
           }
           <input type="password" name="password" id="userPassword" placeholder='ingresa tu contraseña' />
           {
-            user["password"] === null ? <span>Contraseña invalida</span> : null
+            user["password"] === null ? <span className='error-msg'>Contraseña invalida</span> : null
           }
           <button>Ingresar</button>
         </form>
-        <span>
-        </span>
       </article>
     </section>
   )

@@ -1,26 +1,19 @@
 import './App.css'
 import { useContext } from 'react'
 import User from './context/UserContext'
-import { Route, useLocation } from 'wouter'
+import { useLocation } from 'wouter'
 import LoginForm from './components/LoginForm/LoginForm'
-import DashBoard from './components/Dashboard/DashBoad'
-
+import DashBoard from './components/Dashboard/DashBoard'
 function App() {
   const { user } = useContext(User)
-  const [location, setLocation] = useLocation()
-  if (user['password'] === "") setLocation('/login')
+  const [_location, setLocation] = useLocation()
+  if (!user['password'] && !user['username']) setLocation('/login')
   return (
 
     <div className="App">
-      {user['password'] !== "" ? <DashBoard /> : <LoginForm />}
+      {user['password'] && user['username'] ? <DashBoard /> : <LoginForm />}
     </div>
   )
 }
 
 export default App
-
-/*
- {user['username'] !== "" ?
-          <Route path='/' component={DashBoard} /> :
-          <Redirect path='/login' component={LoginForm} />}
-*/
