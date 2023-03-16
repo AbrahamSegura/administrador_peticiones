@@ -5,7 +5,7 @@ import User from '../../context/UserContext';
 import isValideName from '../../services/isvalideName'
 import isValidePassward from '../../services/isValidePassword';
 import encoder from '../../services/encoder'
-
+import axios from 'axios';
 export default function LoginForm() {
   const { user, setUser } = useContext(User)
   const [_path, setLocation] = useLocation()
@@ -17,20 +17,20 @@ export default function LoginForm() {
       "password": isValidePassward(data["password"]) ? encoder(data["password"]) : null
     }
     if (validate['username'] && validate['password']) {
-      // const opt = {
-      //   Method: "post",
-      //   Body: {
-      //     "username": validate['username'],
-      //     "password": validate['password']
-      //   }
-      // }
-      // // fetch('http://localhost:3030/validUsers/', opt) pendiente!!
-      //   .then(res => console.log(res))
-      //   .then(res => console.log(res))
-      evt.target.reset()
-      setLocation("/")
+      axios.post('http://localhost:3030/validUser', {
+        username: validate['username'],
+        password: validate['password']
+      }, {
+        'content-type': 'application/json'
+      })
+        .then(({ data }) => {
+          setUser(data)
+          evt.target.reset()
+          setLocation("/")
+        })
+        .catch(err => console.error(err))
     }
-    setUser(validate)
+
   }
   return (
     <section>
