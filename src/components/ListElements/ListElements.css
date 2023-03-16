@@ -23,6 +23,7 @@
     position: relative;
     width: 100%;
     display: flex;
+    font-size: 16px;
     font-weight: 600;
     color: var(--white);
     border: none;

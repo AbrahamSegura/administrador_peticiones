@@ -1,49 +1,50 @@
 import './LoginForm.css'
-import { useContext } from "react"
+import { useContext } from 'react'
 import { useLocation } from 'wouter'
-import User from '../../context/UserContext';
+import User from '../../context/UserContext'
 import isValideName from '../../services/isvalideName'
-import isValidePassward from '../../services/isValidePassword';
+import isValidePassward from '../../services/isValidePassword'
 import encoder from '../../services/encoder'
-import axios from 'axios';
-export default function LoginForm() {
+import axios from 'axios'
+export default function LoginForm () {
   const { user, setUser } = useContext(User)
   const [_path, setLocation] = useLocation()
   const handelSudmit = evt => {
     evt.preventDefault()
     const data = Object.fromEntries(new FormData(evt.target))
     const validate = {
-      "username": isValideName(data["username"]) ? data["username"] : null,
-      "password": isValidePassward(data["password"]) ? encoder(data["password"]) : null
+      username: isValideName(data.username) ? data.username : null,
+      password: isValidePassward(data.password) ? encoder(data.password) : null
     }
-    if (validate['username'] && validate['password']) {
+    if (validate.username && validate.password) {
       axios.post('http://localhost:3030/validUser', {
-        username: validate['username'],
-        password: validate['password']
+        username: validate.username,
+        password: validate.password
       }, {
         'content-type': 'application/json'
       })
         .then(({ data }) => {
-          setUser(data)
           evt.target.reset()
-          setLocation("/")
+          setUser(data)
+          setLocation('/')
         })
         .catch(err => console.error(err))
+    } else {
+      setUser(validate)
     }
-
   }
   return (
     <section>
       <article>
         <h2>Ingresar</h2>
         <form onSubmit={handelSudmit}>
-          <input type="text" name='username' id='userName' placeholder='ingresa tu usuario' />
+          <input type='text' name='username' id='userName' placeholder='ingresa tu usuario' />
           {
-            user["username"] === null ? <span className='error-msg'>Usuario invalido</span> : null
+            user.username === null ? <span className='error-msg'>Usuario invalido</span> : null
           }
-          <input type="password" name="password" id="userPassword" placeholder='ingresa tu contraseña' />
+          <input type='password' name='password' id='userPassword' placeholder='ingresa tu contraseña' />
           {
-            user["password"] === null ? <span className='error-msg'>Contraseña invalida</span> : null
+            user.password === null ? <span className='error-msg'>Contraseña invalida</span> : null
           }
           <button>Ingresar</button>
         </form>
