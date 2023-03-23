@@ -1,52 +1,57 @@
 import './LoginForm.css'
-import { useContext } from 'react'
-import { useLocation } from 'wouter'
-import User from '../../context/UserContext'
-import isValideName from '../../services/isvalideName'
-import isValidePassward from '../../services/isValidePassword'
-import encoder from '../../services/encoder'
 import axios from 'axios'
+import useUser from '../../hooks/useUser'
+import useRedirection from '../../hooks/useRedirection'
+import useValidate from '../../hooks/useValidate'
+
 export default function LoginForm () {
-  const { user, setUser } = useContext(User)
-  const [_path, setLocation] = useLocation()
+  const { user, setUser } = useUser()
+  const { setLocation } = useRedirection()
   const handelSudmit = evt => {
     evt.preventDefault()
-    const data = Object.fromEntries(new FormData(evt.target))
-    const validate = {
-      username: isValideName(data.username) ? data.username : null,
-      password: isValidePassward(data.password) ? encoder(data.password) : null
-    }
+    const obj = Object.fromEntries(new FormData(evt.target))
+    const validate = useValidate(obj)
+
     if (validate.username && validate.password) {
-      axios.post('http://localhost:3030/validUser', {
+      axios.post('http://localhost:3030/login', {
         username: validate.username,
         password: validate.password
-      }, {
+      },
+      {
         'content-type': 'application/json'
       })
         .then(({ data }) => {
-          evt.target.reset()
           setUser(data)
-          setLocation('/')
+          if (user !== Array) {
+            setLocation('/')
+            console.log(user)
+            return
+          }
+          setUser({
+            username: null,
+            password: null
+          })
         })
-        .catch(err => console.error(err))
-    } else {
-      setUser(validate)
+        .catch(err => console.error(err.response))
     }
   }
   return (
-    <section>
-      <article>
+    <section className='login-container'>
+      <article className='login'>
         <h2>Ingresar</h2>
-        <form onSubmit={handelSudmit}>
-          <input type='text' name='username' id='userName' placeholder='ingresa tu usuario' />
+        <form className='login-form' onSubmit={handelSudmit}>
+          <input type='text' name='username' id='userName' placeholder='ingresa tu usuario' required />
           {
             user.username === null ? <span className='error-msg'>Usuario invalido</span> : null
           }
-          <input type='password' name='password' id='userPassword' placeholder='ingresa tu contraseña' />
+          <input type='password' name='password' id='password' placeholder='ingresa tu contraseña' required />
           {
-            user.password === null ? <span className='error-msg'>Contraseña invalida</span> : null
+            user.username === null ? <span className='error-msg'>Usuario invalido</span> : null
           }
-          <button>Ingresar</button>
+          <button className='btn'>Ingresar</button>
+          {
+            user.password === null && user.username === null ? <span className='error-msg'>Usuario o Contraseña incorrecto</span> : null
+          }
         </form>
       </article>
     </section>

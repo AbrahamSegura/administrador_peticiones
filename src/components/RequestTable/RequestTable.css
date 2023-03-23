@@ -1,0 +1,97 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    gap: 30px;
+}
+
+.card .card-peticiones {
+    position: relative;
+    max-height: 315px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-head .card-title {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.card-link-detail {
+    position: relative;
+    padding: 5px 10px;
+    background-color: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.card-peticiones table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.card-peticiones table thead .table-spaces {
+    padding: 10px;
+    width: 25%;
+}
+
+.card-peticiones table thead .table-spaces:last-child {
+    width: 50%;
+}
+
+.card-peticiones table thead .table-spaces .btn-order {
+    font-weight: 600;
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 5px;
+}
+
+.card-peticiones table thead td .btn-order:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.card-peticiones table tr {
+    color: var(--black-2);
+    border-bottom: 1px solid var(--grey);
+    text-align: center;
+}
+
+.card-peticiones table tbody tr {
+    text-align: center;
+}
+
+.card-peticiones table tbody tr:last-child {
+    border: none;
+}
+
+.card-peticiones table tbody tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.card-peticiones table tbody tr td:last-child {
+    padding: 10px;
+}

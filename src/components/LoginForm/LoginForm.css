@@ -1,8 +1,4 @@
-body {
-    background-color: var(--grey);
-}
-
-section {
+.login-container {
     display: grid;
     aspect-ratio: 16/9;
     align-content: center;
@@ -14,13 +10,13 @@ section {
     border-radius: 10px;
 }
 
-article {
+.login {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-form {
+.login-form {
     display: flex;
     flex-direction: column;
     padding: 0 20px;
@@ -28,7 +24,7 @@ form {
     gap: 10px;
 }
 
-form>input {
+.login-form>input {
     padding: 5px 0;
     outline: none;
     border: none;
@@ -42,7 +38,7 @@ form>input {
     color: #fff;
 }
 
-form>button {
+.btn {
     padding: 10px 0;
     background-color: #09f;
     border: none;
