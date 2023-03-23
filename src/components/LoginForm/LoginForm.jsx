@@ -24,7 +24,6 @@ export default function LoginForm () {
           setUser(data)
           if (user !== Array) {
             setLocation('/')
-            console.log(user)
             return
           }
           setUser({

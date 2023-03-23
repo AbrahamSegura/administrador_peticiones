@@ -1,9 +1,10 @@
 import './RequestTable.css'
 import { Link } from 'wouter'
 import useUser from '../../hooks/useUser'
+import TableBody from '../TableBody/TableBody'
+
 export default function RequestTable () {
   const { user } = useUser()
-  const { listaPeticiones } = user
   return (
     <section className='card-container'>
       <article className='card'>
@@ -17,22 +18,13 @@ export default function RequestTable () {
               <tr>
                 <td className='table-spaces'><button className='btn-order'>Fecha</button></td>
                 <td className='table-spaces'><button className='btn-order'>Estado</button></td>
+                {user.departamento === 'informatica'
+                  ? <td className='table-spaces'><button className='btn-order'>Usuario</button></td>
+                  : null}
                 <td className='table-spaces'><button className='btn-order'>Descripcion</button></td>
               </tr>
             </thead>
-            <tbody>
-              {
-                listaPeticiones.map(({ id, fecha, estado, descripcion }) => {
-                  return (
-                    <tr key={id}>
-                      <td><span>{Date(fecha)}</span></td>
-                      <td><span>{estado}</span></td>
-                      <td><span>{descripcion}</span></td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
+            <TableBody />
           </table>
         </div>
       </article>
