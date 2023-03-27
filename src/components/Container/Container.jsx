@@ -1,21 +1,43 @@
 import './Container.css'
 import RequestTable from '../RequestTable/RequestTable'
+import TopBar from '../TopBar/TopBar'
 export default function Container () {
   return (
     <main className='container'>
-      <header>
-        <button className='btn-header'>
-          <div className='btn-line' />
-          <div className='btn-line' />
-          <div className='btn-line' />
-        </button>
-        <form className='search'>
-          <input type='text' placeholder='Buscar...' />
-          <button><i>*</i></button>
-        </form>
-        <span className='img-cont'><img src='' alt='imagen de usuario' className='img-user' /></span>
-      </header>
+      <TopBar />
       <RequestTable />
     </main>
   )
 }
+/*
+<article class="card-box">
+    <div class="card">
+        <div>
+            <div class="number">1,532</div>
+            <div class="card-name">Total Estuantes</div>
+        </div>
+        <div class="icon-box"><i>*</i></div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="number">23,532</div>
+            <div class="card-name">Total Egresados</div>
+        </div>
+        <div class="icon-box"><i>*</i></div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="number">132</div>
+            <div class="card-name">Personal Docente</div>
+        </div>
+        <div class="icon-box"><i>*</i></div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="number">55</div>
+            <div class="card-name">Personal Administrativo</div>
+        </div>
+        <div class="icon-box"><i>*</i></div>
+    </div>
+</article>
+*/

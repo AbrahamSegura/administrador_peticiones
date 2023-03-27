@@ -11,10 +11,3 @@
 .navigation.actived {
     width: 60px;
 }
-
-.navigation ul {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
