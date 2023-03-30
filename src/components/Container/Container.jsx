@@ -1,14 +1,21 @@
 import './Container.css'
+import { Route } from 'wouter'
 import RequestTable from '../RequestTable/RequestTable'
 import TopBar from '../TopBar/TopBar'
+import RequestContent from '../RequestContent/RequestContent'
+import CardHelp from '../CardHelp/CardHelp'
+
 export default function Container () {
   return (
     <main className='container'>
       <TopBar />
-      <RequestTable />
+      <Route path='/' component={RequestTable} />
+      <Route path='/Peticiones' component={RequestContent} />
+      <Route path='/Ayuda' component={CardHelp} />
     </main>
   )
 }
+
 /*
 <article class="card-box">
     <div class="card">

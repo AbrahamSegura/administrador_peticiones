@@ -39,7 +39,7 @@ export default function LoginForm () {
       <article className='login'>
         <h2>Ingresar</h2>
         <form className='login-form' onSubmit={handelSudmit}>
-          <input type='text' name='username' id='userName' placeholder='ingresa tu usuario' required />
+          <input type='text' name='username' id='userName' placeholder='ingresa tu usuario' autoCapitalize='false' required autoFocus />
           {
             user.username === null ? <span className='error-msg'>Usuario invalido</span> : null
           }

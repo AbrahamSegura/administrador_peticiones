@@ -1,0 +1,41 @@
+.card-help {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: initial;
+    padding: var(--icon-size);
+}
+
+.card-help>* {
+    margin-bottom: 10px;
+}
+
+.card-help>table {
+    border: 1px solid var(--black-2);
+    width: 15rem;
+}
+
+.card-help table thead tr {
+    background-color: var(--grey);
+    font-size: 18px;
+    box-shadow: 0 3px var(--black-2);
+
+}
+
+.card-help table tbody tr {
+    box-shadow: 0 1px var(--black-2);
+}
+
+.card-help table tbody tr:nth-child(3n+2) {
+    background-color: var(--grey);
+}
+
+.card-help table td {
+    padding: 5px;
+    border: none;
+    border-right: 3px solid var(--black-2);
+}
+
+.card-help ul li {
+    list-style: decimal;
+}

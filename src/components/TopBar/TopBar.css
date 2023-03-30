@@ -26,7 +26,6 @@ header {
     flex-direction: column;
     border-radius: 10px;
     align-content: start;
-    padding: 0px;
     margin-bottom: 11px;
     box-shadow: 1px 2px var(--grey);
 }
@@ -38,7 +37,7 @@ header {
 }
 
 .search input {
-    width: 25rem;
+    width: 30rem;
     border-radius: 10px;
     outline: none;
     border: 1px solid var(--grey);

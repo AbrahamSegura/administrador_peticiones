@@ -1,12 +1,20 @@
 import './ListElements.css'
 import useUser from '../../hooks/useUser'
 import ElementList from '../Elementlist/ElementList'
+import useRedirection from '../../hooks/useRedirection'
 
 export default function ListElements () {
   const { user, setUser } = useUser()
+  const { setLocation } = useRedirection()
   const handelExit = () => {
     const sure = window.confirm('Seguro que desea salir?')
-    if (sure) setUser({})
+    if (sure) {
+      setUser({
+        username: undefined,
+        password: undefined
+      })
+      setLocation('/login')
+    }
   }
   return (
     <nav className='navigation'>
