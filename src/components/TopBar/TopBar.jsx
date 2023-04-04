@@ -1,4 +1,5 @@
 import './TopBar.css'
+import Search from '../Icons/Search'
 
 export default function TopBar () {
   const handelWidth = () => {
@@ -16,7 +17,7 @@ export default function TopBar () {
       </button>
       <form className='search'>
         <input type='text' placeholder='Buscar...' />
-        <button><i>*</i></button>
+        <button><i> <Search /> </i></button>
       </form>
       <span className='img-cont'><img src='' alt='imagen de usuario' className='img-user' /></span>
     </header>
