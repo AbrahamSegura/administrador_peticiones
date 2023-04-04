@@ -39,11 +39,12 @@
 .navigation ul li .Linked .icon {
     position: relative;
     display: block;
-    min-width: var(--icon-size);
-    height: var(--icon-size);
+    min-width: calc(var(--icon-size)/2);
+    height: calc(var(--icon-size)/2);
     line-height: var(--icon-size);
     text-align: center;
     z-index: 10;
+    margin: 7px 0 0 10px;
 }
 
 .navigation ul li .Linked .icon i {
