@@ -23,6 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 .env*
-
-# SupaBase
-client.jsx
