@@ -21,8 +21,8 @@ export default function LoginForm () {
         'content-type': 'application/json'
       })
         .then(({ data }) => {
-          setUser(data)
-          if (user !== Array) {
+          setUser(data[0])
+          if (data) {
             setLocation('/')
             return
           }

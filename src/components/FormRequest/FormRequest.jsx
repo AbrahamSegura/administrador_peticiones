@@ -13,7 +13,6 @@ export default function FormRequest () {
     const obj = Object.fromEntries(new FormData(evt.target))
     console.log(obj)
   }
-  console.log(value)
   return (
     <form onSubmit={handelSudmit} className='form-request'>
       <h3>Crea una Nueva Petición </h3>
