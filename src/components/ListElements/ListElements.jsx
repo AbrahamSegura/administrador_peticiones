@@ -1,13 +1,18 @@
 import './ListElements.css'
+import { useEffect } from 'react'
 import useUser from '../../hooks/useUser'
 import ElementList from '../Elementlist/ElementList'
 import useRedirection from '../../hooks/useRedirection'
+import addClassNames from '../../services/addClassNames.js'
 // import User from '../Icons/User'
 import LogOut from '../Icons/LogOut'
 
 export default function ListElements () {
   const { user, setUser } = useUser()
-  const { setLocation } = useRedirection()
+  const { setLocation, location } = useRedirection()
+  useEffect(() => {
+    addClassNames(location)
+  }, [location])
   const handelExit = () => {
     const sure = window.confirm('Seguro que desea salir?')
     if (sure) {
