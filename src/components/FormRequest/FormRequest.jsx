@@ -1,8 +1,10 @@
 import './FormRequest.css'
 import { useState } from 'react'
-
+import { sendData } from '../../services/sendData.js'
+import useUser from '../../hooks/useUser'
 export default function FormRequest () {
   const [value, setValue] = useState('')
+  const { user } = useUser()
   const handelChange = e => {
     const v = e.target.value
     console.log(v)
@@ -11,7 +13,19 @@ export default function FormRequest () {
   const handelSudmit = evt => {
     evt.preventDefault()
     const obj = Object.fromEntries(new FormData(evt.target))
-    console.log(obj)
+    const req = {
+      ...obj,
+      user: user.departamento,
+      userId: user.id
+    }
+    console.log(req)
+    const path = '/login'
+    const type = 'post'
+    const data = sendData({ req, path, type })
+    console.log(data)
+    if (data) {
+      return data
+    }
   }
   return (
     <form onSubmit={handelSudmit} className='form-request'>
@@ -23,7 +37,7 @@ export default function FormRequest () {
         <option value='otro'>otro</option>
       </select>
       {
-        value === 'otro' ? <input type='text' name='descripcion-2' placeholder='Indique cual' /> : <br />
+        value === 'otro' ? <input type='text' name='descripcion2' placeholder='Indique cual' /> : <br />
       }
       <textarea name='descripcion' placeholder='Escribe una breve descripción del problema' />
       <button>Enviar</button>

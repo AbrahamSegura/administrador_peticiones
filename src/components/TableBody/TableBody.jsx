@@ -3,7 +3,7 @@ import useUser from '../../hooks/useUser.jsx'
 export default function TableBody () {
   const { user } = useUser()
   const { peticiones } = user
-
+  console.log(peticiones)
   return (
     <tbody>
       {
