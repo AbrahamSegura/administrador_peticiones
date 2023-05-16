@@ -5,24 +5,18 @@ import useUser from '../../hooks/useUser'
 export default function FormRequest () {
   const [value, setValue] = useState('')
   const { user } = useUser()
-  const handelChange = e => {
-    const v = e.target.value
-    console.log(v)
-    setValue(v)
-  }
+  const handelChange = e => setValue(e.target.value)
   const handelSudmit = evt => {
     evt.preventDefault()
     const obj = Object.fromEntries(new FormData(evt.target))
     const req = {
       ...obj,
-      user: user.departamento,
+      username: user.departamento,
       userId: user.id
     }
-    console.log(req)
     const path = '/login'
     const type = 'post'
     const data = sendData({ req, path, type })
-    console.log(data)
     if (data) {
       return data
     }
